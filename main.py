@@ -8,7 +8,7 @@ app = FastAPI(title="Weather API", description="Consulta meteorológica y genera
 
 @app.get("/")
 def root():
-    return {"message": "Welcome to WeatherApi"}
+    return {"message": "Welcome to Weather Api"}
 
 @app.get("/weather/{city}")
 def get_weather(city: str):

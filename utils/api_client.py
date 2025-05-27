@@ -21,7 +21,7 @@ def get_weather_data(lat, lon):
         url = (
             f"https://api.open-meteo.com/v1/forecast"
             f"?latitude={lat}&longitude={lon}"
-            f"&hourly=temperature_2m,relative_humidity_2m,rain&timezone=auto"
+            f"&hourly=temperature_2m,relative_humidity_2m,rain"
         )
         response = requests.get(url, verify=False)  # Desactiva SSL TEMPORALMENTE
         if response.status_code == 200:
