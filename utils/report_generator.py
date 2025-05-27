@@ -5,8 +5,10 @@ from xhtml2pdf import pisa
 
 def _save_dataframe(city, data, ext):
     df = pd.DataFrame(data)
+    folder = "generated_files"
+    os.makedirs(folder, exist_ok=True)
     filename = f"{city}_weather.{ext}"
-    path = os.path.join(os.getcwd(), filename)
+    path = os.path.join(folder, filename)
     return df, path
 
 def generate_excel(city, data):
@@ -24,7 +26,10 @@ def generate_pdf(city, data):
     template = env.get_template("pdf_template.html")
     html_content = template.render(city=city, forecast=data)
 
-    path = f"{city}_weather.pdf"
+    folder = "generated_files"
+    os.makedirs(folder, exist_ok=True)
+    filename = f"{city}_weather.pdf"
+    path = os.path.join(folder, filename)
     with open(path, "w+b") as result_file:
         pisa.CreatePDF(src=html_content, dest=result_file)
     return path
